@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
-
 @Controller
 public class SentenceController
 {
 	@Autowired
-	private DiscoveryClient client;
+	// private DiscoveryClient client;
+	private RestTemplate template;
 
 	/**
 	 * Display a small list of Sentences to the caller:
@@ -24,12 +24,8 @@ public class SentenceController
 	@GetMapping("/sentence")
 	public @ResponseBody String getSentence()
 	{
-		return "<h3>Some Sentences</h3><br/>" + buildSentence() + 
-		       "<br/><br/>" + buildSentence() + 
-		       "<br/><br/>" + buildSentence() + 
-		       "<br/><br/>" + buildSentence() + 
-		       "<br/><br/>" + buildSentence() + 
-		       "<br/><br/>";
+		return "<h3>Some Sentences</h3><br/>" + buildSentence() + "<br/><br/>" + buildSentence() + "<br/><br/>" + buildSentence()
+		+ "<br/><br/>" + buildSentence() + "<br/><br/>" + buildSentence() + "<br/><br/>";
 	}
 
 	/**
@@ -51,21 +47,25 @@ public class SentenceController
 	}
 
 	/**
-	 * Obtain a random word for a given part of speech, 
-	 * where the part of speech is indicated by the given service / client ID:
+	 * Obtain a random word for a given part of speech, where the part of speech is indicated by the given service / client ID:
 	 */
 	public String getWord(String service)
 	{
-		List<ServiceInstance> list = this.client.getInstances(service);
-		if (list != null && list.size() > 0)
-		{
-			URI uri = list.get(0).getUri();
-			if (uri != null)
-			{
-				return (new RestTemplate()).getForObject(uri, String.class);
-			}
-		}
-		
-		return null;
+		return this.template.getForObject("http://" + service, String.class);
 	}
+	
+//	public String getWord(String service)
+//	{
+//		List<ServiceInstance> list = this.template.getInstances(service);
+//		if (list != null && list.size() > 0)
+//		{
+//			URI uri = list.get(0).getUri();
+//			if (uri != null)
+//			{
+//				 return (new RestTemplate()).getForObject(uri, String.class);
+//			}
+//		}
+//
+//		return null;
+//	}
 }

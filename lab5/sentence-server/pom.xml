@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>sentence-server</name>
-	<description>Learning roobbin for Spring cloud</description>
+	<description>Learning ribbon for Spring cloud</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -39,6 +39,11 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
 		</dependency>
 		
 		<dependency>
