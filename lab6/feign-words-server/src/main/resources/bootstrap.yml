@@ -54,12 +54,3 @@ spring:
 
 server:
   port: 9005
-
----
-spring:
-  profiles: cold-noun
-  application:
-    name: noun
-
-server:
-  port: 9010

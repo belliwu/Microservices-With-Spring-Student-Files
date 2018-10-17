@@ -1,4 +1,4 @@
-package edume.wordserver;
+package edume.feignsentenceserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class WordServerApplication
+public class FeignSentenceServerApplication
 {
 	public static void main(String[] args)
 	{
-		SpringApplication.run(WordServerApplication.class, args);
+		SpringApplication.run(FeignSentenceServerApplication.class, args);
 	}
 }
