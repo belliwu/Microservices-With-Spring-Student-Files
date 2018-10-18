@@ -3,10 +3,10 @@ package edume.feignwordsserver.controller;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class WordController
 {
 	@Value("${words}")
@@ -16,6 +16,7 @@ public class WordController
 	@GetMapping("/")
 	public Word getWord()
 	{
+		System.out.println("words[1] :" + words[1]);
 		return new Word(words[random.nextInt(words.length)]);
 	}
 }
