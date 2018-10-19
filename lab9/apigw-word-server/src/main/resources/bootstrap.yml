@@ -1,0 +1,56 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8001
+
+#server:
+#  port: ${PORT:${SERVER_PORT:0}}
+
+eureka:
+  instance:
+    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+---
+spring:
+  profiles: subject
+  application:
+    name: subject
+
+server:
+  port: 9001
+  
+---
+spring:
+  profiles: verb
+  application:
+    name: verb
+
+server:
+  port: 9002
+  
+---
+spring:
+  profiles: article
+  application:
+    name: article
+
+server:
+  port: 9003
+  
+---
+spring:
+  profiles: adjective
+  application:
+    name: adjective
+
+server:
+  port: 9004
+  
+---
+spring:
+  profiles: noun
+  application:
+    name: noun
+
+server:
+  port: 9005
